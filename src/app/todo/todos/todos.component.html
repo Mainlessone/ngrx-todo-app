@@ -1,11 +1,28 @@
-<ul>
-  <li *ngFor="let todo of toDoList">
-    <label>
-      <input type="checkbox" [checked]="todo.isCompleted">
-      <del *ngIf="todo.isCompleted">
-        <span>{{todo.toDo}}</span>
-      </del>
-      <span *ngIf="!todo.isCompleted">{{todo.toDo}}</span>
-    </label>
-  </li>
-</ul>
+<div class="container">
+  <ul>
+    <li *ngFor="let todo of toDoList">
+      <div *ngIf="!todo.isCompleted">
+        <input type="checkbox" [checked]="todo.isCompleted" (click)="onToggle($event, todo.id)">
+        <label>
+          <span *ngIf="!todo.isCompleted">{{todo.toDo}}</span>
+        </label>
+        <span (click)="deleteToDo(todo.id)">Delete</span>
+      </div>
+    </li>
+  </ul>
+
+
+  <ul>
+    <li *ngFor="let todo of toDoList">
+      <label *ngIf="todo.isCompleted">
+        <del>
+          <span>{{todo.toDo}}</span>
+        </del>
+        <span (click)="deleteToDo(todo.id)">Delete</span>
+      </label>
+    </li>
+  </ul>
+
+</div>
+
+<span (click)="deleteAllDoneTodos()">Clear</span>

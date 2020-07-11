@@ -28,6 +28,24 @@ export const todoReducer = (state: ToDoState = initialState, action: ToDoActions
           }
         ]
       };
+    case toDoActionsType.complete:
+      return {
+        ...state,
+        toDoList: state.toDoList.map(todo => todo.id === action.payload.id ? {
+          ...todo,
+          isCompleted: !todo.isCompleted
+        } : todo)
+      };
+    case toDoActionsType.delete:
+      return {
+        ...state,
+        toDoList: state.toDoList.filter(todo => todo.id !== action.payload.id)
+      };
+    case toDoActionsType.deleteAllDone:
+      return {
+        ...state,
+        toDoList: state.toDoList.filter(todo => !todo.isCompleted)
+      }
     default:
       return state;
   }

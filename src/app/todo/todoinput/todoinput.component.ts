@@ -1,5 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { ToDo } from '../todo';
 
 @Component({
   selector: 'app-todoinput',
@@ -19,6 +20,10 @@ export class TodoinputComponent implements OnInit {
       this.createToDo.emit(this.toDo);
       this.toDo = '';
     }
+  }
+
+  editToDo(toDo: ToDo): void {
+    console.log(toDo)
   }
 
   ngOnInit(): void {

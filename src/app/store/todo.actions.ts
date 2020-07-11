@@ -2,7 +2,9 @@ import { Action } from '@ngrx/store';
 
 export enum toDoActionsType {
   create = '[TODO] create todo item',
-  delete = '[TODO] delete todo item'
+  complete = '[TODO] complete todo item',
+  delete = '[TODO] delete todo item',
+  deleteAllDone = '[TODO] delete all done todo items'
 }
 
 export class CreateToDo implements Action {
@@ -11,11 +13,22 @@ export class CreateToDo implements Action {
   constructor(public payload: { toDo: string }) { }
 }
 
+export class CompleteToDo implements Action {
+  readonly type = toDoActionsType.complete;
+
+  constructor(public payload: { id: number }) { }
+}
+
 export class DeleteToDo implements Action {
   readonly type = toDoActionsType.delete;
 
-  constructor(public payload: { toDo: string }) { }
+  constructor(public payload: { id: number }) { }
 }
 
+export class DeleteAllDoneToDo implements Action {
+  readonly type = toDoActionsType.deleteAllDone;
 
-export type ToDoActions = CreateToDo | DeleteToDo;
+  constructor() { }
+}
+
+export type ToDoActions = CreateToDo | CompleteToDo | DeleteToDo | DeleteAllDoneToDo;

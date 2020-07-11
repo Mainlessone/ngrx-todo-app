@@ -2,6 +2,7 @@
 
   <app-todoinput (createToDo)="onCreate($event)"></app-todoinput>
 
-  <app-todos [toDoList]="toDoList$ | async"></app-todos>
+  <app-todos [toDoList]="toDoList$ | async" (delete)="onDelete($event)" (toggle)="onToggle($event)"
+    (deleteAllDone)="onDeleteAllDone()"></app-todos>
 
 </div>

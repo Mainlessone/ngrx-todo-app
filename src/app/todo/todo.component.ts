@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { ToDoState } from '../store/todo.reducer';
-import { CreateToDo } from '../store/todo.actions';
+import { CreateToDo, DeleteToDo, CompleteToDo, DeleteAllDoneToDo } from '../store/todo.actions';
 import { ToDo } from './todo';
 import { toDoListSelector } from '../store/todo.selectors';
 import { Observable } from 'rxjs';
@@ -18,8 +18,20 @@ export class TodoComponent implements OnInit {
   constructor(private store$: Store<ToDoState>) {
   }
 
+  onToggle(id: number): void {
+    this.store$.dispatch(new CompleteToDo({ id }));
+  }
+
   onCreate(toDo: string): void {
-    this.store$.dispatch(new CreateToDo({ toDo }))
+    this.store$.dispatch(new CreateToDo({ toDo }));
+  };
+
+  onDelete(id: number): void {
+    this.store$.dispatch(new DeleteToDo({ id }));
+  }
+
+  onDeleteAllDone(): void {
+    this.store$.dispatch(new DeleteAllDoneToDo());
   }
 
   ngOnInit(): void {
