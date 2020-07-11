@@ -24,9 +24,17 @@ export const todoReducer = (state: ToDoState = initialState, action: ToDoActions
           {
             id: state.idIncrement,
             toDo: action.payload.toDo,
-            completed: false
+            isCompleted: false
           }
         ]
+      };
+    case toDoActionsType.edit:
+      return {
+        ...state,
+        toDoList: state.toDoList.map(todo => todo.id === action.payload.id ? {
+          ...todo,
+          toDo: action.payload.toDo
+        } : todo)
       };
     case toDoActionsType.complete:
       return {

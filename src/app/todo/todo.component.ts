@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { ToDoState } from '../store/todo.reducer';
-import { CreateToDo, DeleteToDo, CompleteToDo, DeleteAllDoneToDo } from '../store/todo.actions';
+import { CreateToDo, DeleteToDo, CompleteToDo, DeleteAllDoneToDo, EditToDo } from '../store/todo.actions';
 import { ToDo } from './todo';
 import { toDoListSelector } from '../store/todo.selectors';
 import { Observable } from 'rxjs';
@@ -25,6 +25,10 @@ export class TodoComponent implements OnInit {
   onCreate(toDo: string): void {
     this.store$.dispatch(new CreateToDo({ toDo }));
   };
+
+  onEdit({ toDo, id }): void {
+    this.store$.dispatch(new EditToDo({ toDo, id }))
+  }
 
   onDelete(id: number): void {
     this.store$.dispatch(new DeleteToDo({ id }));

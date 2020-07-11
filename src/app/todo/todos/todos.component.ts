@@ -8,10 +8,12 @@ import { ToDo } from '../todo';
 })
 export class TodosComponent implements OnInit {
 
+  editIds: number[] = [];
+
   @Input() toDoList: ToDo[] = [];
 
   @Output() toggle = new EventEmitter<number>();
-  @Output() edit = new EventEmitter<ToDo>();
+  @Output() edit = new EventEmitter<{ toDo: string, id: number }>();
   @Output() delete = new EventEmitter<number>();
   @Output() deleteAllDone = new EventEmitter();
 
@@ -22,8 +24,13 @@ export class TodosComponent implements OnInit {
     this.toggle.emit(id);
   }
 
-  editToDo(todo: ToDo): void {
-    this.edit.emit(todo);
+  onEdit(toDo: string, id: number): void {
+    this.editIds = this.editIds.filter(item => item !== id);
+    this.edit.emit({ toDo, id });
+  }
+
+  editToDo(id: number): void {
+    this.editIds.push(id);
   }
 
   deleteToDo(id: number): void {

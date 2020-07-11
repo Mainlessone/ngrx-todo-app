@@ -5,11 +5,12 @@ import { StoreModule } from '@ngrx/store';
 import { TODO_REDUCER_NODE, todoReducer } from '../store/todo.reducer';
 import { TodoinputComponent } from './todoinput/todoinput.component';
 import { FormsModule } from '@angular/forms';
-import { TodosComponent } from './todos/todos.component'
+import { TodosComponent } from './todos/todos.component';
+import { TodoeditComponent } from './todoedit/todoedit.component'
 
 
 @NgModule({
-  declarations: [TodoComponent, TodoinputComponent, TodosComponent],
+  declarations: [TodoComponent, TodoinputComponent, TodosComponent, TodoeditComponent],
   imports: [
     CommonModule,
     StoreModule.forFeature(TODO_REDUCER_NODE, todoReducer),
