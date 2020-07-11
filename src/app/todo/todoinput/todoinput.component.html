@@ -1,0 +1,4 @@
+<form (ngSubmit)="addToDo()">
+  <input type="text" name="toDo" [(ngModel)]="toDo">
+  <button [disabled]="!toDo">Add</button>
+</form>

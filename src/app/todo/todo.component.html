@@ -1,0 +1,7 @@
+<div class="container">
+
+  <app-todoinput (createToDo)="onCreate($event)"></app-todoinput>
+
+  <app-todos [toDoList]="toDoList$ | async"></app-todos>
+
+</div>

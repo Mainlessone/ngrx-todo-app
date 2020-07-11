@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let todo of toDoList">
+    <label>
+      <input type="checkbox" [checked]="todo.isCompleted">
+      <del *ngIf="todo.isCompleted">
+        <span>{{todo.toDo}}</span>
+      </del>
+      <span *ngIf="!todo.isCompleted">{{todo.toDo}}</span>
+    </label>
+  </li>
+</ul>
