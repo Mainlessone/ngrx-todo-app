@@ -7,6 +7,7 @@ import { TodoinputComponent } from './todoinput/todoinput.component';
 import { FormsModule } from '@angular/forms';
 import { TodosComponent } from './todos/todos.component';
 import { TodoeditComponent } from './todoedit/todoedit.component'
+import { TodoStorageService } from '../service/todo-storage.service';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { TodoeditComponent } from './todoedit/todoedit.component'
     StoreModule.forFeature(TODO_REDUCER_NODE, todoReducer),
     FormsModule
   ],
+  providers: [TodoStorageService],
   exports: [TodoComponent],
   bootstrap: [TodoComponent]
 })

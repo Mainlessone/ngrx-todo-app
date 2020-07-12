@@ -53,7 +53,11 @@ export const todoReducer = (state: ToDoState = initialState, action: ToDoActions
       return {
         ...state,
         toDoList: state.toDoList.filter(todo => !todo.isCompleted)
-      }
+      };
+    case toDoActionsType.loadToDoState:
+      return {
+        ...action.payload.state
+      };
     default:
       return state;
   }

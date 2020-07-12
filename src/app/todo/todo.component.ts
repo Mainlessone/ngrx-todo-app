@@ -5,6 +5,7 @@ import { CreateToDo, DeleteToDo, CompleteToDo, DeleteAllDoneToDo, EditToDo } fro
 import { ToDo } from './todo';
 import { toDoListSelector } from '../store/todo.selectors';
 import { Observable } from 'rxjs';
+import { TodoStorageService } from '../service/todo-storage.service';
 
 @Component({
   selector: 'app-todo',
@@ -15,7 +16,7 @@ export class TodoComponent implements OnInit {
 
   toDoList$: Observable<ToDo[]> = this.store$.pipe(select(toDoListSelector));
 
-  constructor(private store$: Store<ToDoState>) {
+  constructor(private store$: Store<ToDoState>, private toDoStorage: TodoStorageService) {
   }
 
   onToggle(id: number): void {
@@ -39,6 +40,7 @@ export class TodoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.toDoStorage.init();
   }
 
 }
