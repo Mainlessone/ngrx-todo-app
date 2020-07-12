@@ -1,0 +1,12 @@
+$borderRad: 0;
+
+form {
+
+  input {
+    border-radius: $borderRad;
+  }
+
+  button {
+    border-radius: $borderRad;
+  }
+}

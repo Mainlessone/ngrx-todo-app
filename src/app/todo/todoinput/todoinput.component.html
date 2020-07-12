@@ -1,7 +1,8 @@
 <div class="container">
-  <form (ngSubmit)="addToDo()">
-    <input type="text" name="toDo" class="input" [(ngModel)]="toDo">
-    <button [disabled]="!toDo">Add</button>
+  <form class="input-group mb-3" (ngSubmit)="addToDo()">
+    <input type="text" name="toDo" class="input form-control" [(ngModel)]="toDo">
+    <div class="input-group-prepend">
+      <button class="btn btn-light" [disabled]="!toDo">Add</button>
+    </div>
   </form>
-
 </div>

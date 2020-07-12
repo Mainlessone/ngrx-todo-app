@@ -29,11 +29,11 @@ export class TodoComponent implements OnInit {
 
   onEdit({ toDo, id }): void {
     this.store$.dispatch(new EditToDo({ toDo, id }))
-  }
+  };
 
   onDelete(id: number): void {
     this.store$.dispatch(new DeleteToDo({ id }));
-  }
+  };
 
   onDeleteAllDone(): void {
     this.store$.dispatch(new DeleteAllDoneToDo());

@@ -1,28 +1,77 @@
+$defaultBackgroundColor: rgb(177, 177, 241);
+$defaultHoverBackgroundColor: rgb(201, 201, 218);
+$defaultFontColor: rgb(92, 92, 92);
+
+@mixin toDoBlock($bgc, $limargin) {
+  display: flex;
+  flex-direction: column;
+  min-width: 35vw;
+  min-height: 60vh;
+  border: 0.5px solid $defaultBackgroundColor;
+
+  li {
+    list-style-type: none;
+    width: 100%;
+    background-color: $bgc;
+    max-height: 5vh;
+    margin: $limargin;
+
+    span {
+      max-width: 100%;
+    }
+  }
+}
+
 * {
   padding: 0;
 }
 
-li {
-  list-style-type: none;
+h2 {
+  text-align: center;
 }
 
 .container {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
+
+  .container-todo {
+    .todos {
+      @include toDoBlock(red, 1vh 1vh 0 1vh);
+    }
+  }
+
+  .container-todo-done {
+    .todos-done {
+      @include toDoBlock(none, 1vh 2vh 0 2vh);
+    }
+
+    .clearBtn {
+      width: 100%;
+      background-color: $defaultBackgroundColor;
+      display: flex;
+      justify-content: center;
+      color: $defaultFontColor;
+      border: none;
+      margin-bottom: 2vh;
+
+      &:hover {
+        background-color: $defaultHoverBackgroundColor;
+        border: none;
+      }
+
+      &:active {
+        background-color: $defaultBackgroundColor;
+      }
+    }
+
+
+
+  }
+
+
+
+
 }
 
-.todos {
-  display: flex;
-  flex-direction: column;
-  min-width: 20vw;
-  min-height: 60vh;
-  border: 0.5px solid black;
-}
 
-.clearBtn {
-  width: 100%;
-  background-color: blue;
-  display: flex;
-  justify-content: center;
-}

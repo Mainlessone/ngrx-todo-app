@@ -29,6 +29,10 @@ export class TodosComponent implements OnInit {
     this.edit.emit({ toDo, id });
   }
 
+  onDelete(id: number): void {
+    this.delete.emit(id);
+  }
+
   editToDo(id: number): void {
     this.editIds.push(id);
   }

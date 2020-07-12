@@ -1,5 +1,6 @@
-<form action="" (ngSubmit)="onEdit()">
-  <input type="text" name="name" [(ngModel)]="toDo">
-  <button [disabled]="!toDo">Ok</button>
-  <button (click)="onCancel()">Cancel</button>
+<form class="input-group mb-3" (ngSubmit)="onEdit()">
+  <input class="input form-control" type="text" name="name" [(ngModel)]="toDo">
+  <button class="btn btn-light" [disabled]="!toDo">Ok</button>
+  <button class="btn btn-light" (click)="onCancel()">Cancel</button>
+  <button class="btn btn-light" (click)="deleteToDo(todo.id)">Delete</button>
 </form>

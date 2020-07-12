@@ -13,6 +13,7 @@ export class TodoeditComponent implements OnInit {
   @Input() todo: ToDo;
 
   @Output() edit = new EventEmitter<string>();
+  @Output() delete = new EventEmitter<number>();
 
   constructor() { }
 
@@ -24,8 +25,13 @@ export class TodoeditComponent implements OnInit {
     this.toDo = this.todo.toDo;
   }
 
+  deleteToDo(id: number): void {
+    this.delete.emit(id);
+  }
+
   ngOnInit(): void {
     this.toDo = this.todo.toDo;
+
   }
 
 }

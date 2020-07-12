@@ -2,6 +2,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .input-group {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+
+    input {
+      width: 50vw;
+    }
+  }
 }
 
 
