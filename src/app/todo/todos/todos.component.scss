@@ -2,20 +2,20 @@ $defaultBackgroundColor: rgb(177, 177, 241);
 $defaultHoverBackgroundColor: rgb(201, 201, 218);
 $defaultFontColor: rgb(92, 92, 92);
 
-@mixin toDoBlock($bgc, $limargin) {
-  display: flex;
+@mixin toDoBlock($bgc, $display) {
+  display: $display;
   flex-direction: column;
   min-width: 35vw;
   min-height: 60vh;
-  border: 0.5px solid $defaultBackgroundColor;
+  border: 0.1px solid $defaultBackgroundColor;
 
   li {
     list-style-type: none;
     width: 100%;
     background-color: $bgc;
     max-height: 5vh;
-    margin: $limargin;
-
+    max-width: 33.8vw;
+    margin: 1vh 1vh 0 1vh;
     span {
       max-width: 100%;
     }
@@ -36,14 +36,23 @@ h2 {
   flex-direction: row;
 
   .container-todo {
+
     .todos {
-      @include toDoBlock(red, 1vh 1vh 0 1vh);
+      @include toDoBlock(0, block);
+
+      input[type="checkbox"] {
+        margin-right: 1vw;
+        }
+
+
+
     }
   }
 
   .container-todo-done {
+
     .todos-done {
-      @include toDoBlock(none, 1vh 2vh 0 2vh);
+      @include toDoBlock(0, flex);
     }
 
     .clearBtn {

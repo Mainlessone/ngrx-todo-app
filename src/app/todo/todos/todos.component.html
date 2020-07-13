@@ -5,7 +5,7 @@
     <ul class="todos">
       <li *ngFor="let todo of toDoList">
         <div *ngIf="!todo.isCompleted && !editIds.includes(todo.id)" (dblclick)="editToDo(todo.id)">
-          <input type="checkbox" [checked]="todo.isCompleted" (click)="onToggle($event, todo.id)">
+          <input type="checkbox" class="input" [checked]="todo.isCompleted" (click)="onToggle($event, todo.id)">
           <label>
             <span *ngIf="!todo.isCompleted">{{todo.toDo}}</span>
           </label>
